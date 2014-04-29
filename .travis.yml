@@ -11,4 +11,4 @@ before_script:
   - sudo chroot gentoo emerge-webrsync -q
   - sudo chroot gentoo emerge --quiet --sync
 script:
-  - sudo chroot gentoo egencache --jobs=9 --repo=gentoo --update --update-use-local-desc
+  - sudo chroot gentoo egencache --jobs="$(($(nproc) + 1))" --repo=gentoo --update --update-use-local-desc
