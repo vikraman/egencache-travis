@@ -1,0 +1,7 @@
+script:
+  - wget http://gentoo.osuosl.org/releases/x86/autobuilds/latest-stage3-i686.txt
+  - wget http://gentoo.osuosl.org/releases/x86/autobuilds/$(tail -1 latest-stage3-i686.txt) -O stage3.tar.bz2
+  - mkdir gentoo
+  - tar xvpf stage3.tar.bz2 -C gentoo
+  - sudo chroot gentoo emerge-webrsync
+  - sudo chroot gentoo egencache --jobs=9 --repo=gentoo --update --update-use-local-desc
